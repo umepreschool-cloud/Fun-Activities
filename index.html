@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUN Activity Day @ UME — UME Preschool &amp; Daycare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2c3a3a;
+    --ink-soft:#6b7a7a;
+    --mint:#bfe6d8;
+    --peach:#ffdcc2;
+    --lav:#dcd6f7;
+    --accent:#3fa587;
+    --accent-dark:#2c7c65;
+    --border:#dbe7e2;
+    --success-bg:#e6f6ec;
+    --success-border:#8fd6ab;
+    --success-ink:#1c7a3d;
+    --error-bg:#fdecec;
+    --error-border:#f3b7b7;
+    --error-ink:#a3372c;
+  }
+
+  *{box-sizing:border-box;}
+
+  .ta{
+    font-family:'Noto Sans Tamil','Noto Sans',sans-serif;
+    display:block;
+    font-size:0.85em;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-top:2px;
+  }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Noto Sans',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 10% 6%, rgba(191,230,216,0.7), transparent 42%),
+      radial-gradient(circle at 90% 10%, rgba(255,220,194,0.65), transparent 42%),
+      radial-gradient(circle at 15% 92%, rgba(220,214,247,0.6), transparent 45%),
+      linear-gradient(135deg, #fbfdfc 0%, #f6f9f7 50%, #fdf9f5 100%);
+    background-attachment:fixed;
+    padding:40px 16px 70px;
+  }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent-dark);
+    background:rgba(63,165,135,0.13);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:clamp(24px,5vw,32px);
+    line-height:1.25;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  h1 .h1-ta{
+    display:block;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-weight:700;
+    font-size:0.62em;
+    color:var(--accent-dark);
+    margin-top:6px;
+  }
+  header p.sub{
+    max-width:480px;
+    margin:12px auto 0;
+    font-size:15px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+
+  .school-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:8px 18px;
+    margin:16px auto 0;
+    max-width:520px;
+    background:#ffffffbf;
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:10px 20px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .school-bar strong{
+    font-family:'Baloo 2', sans-serif;
+    color:var(--accent-dark);
+    font-size:14.5px;
+  }
+  .school-bar .sep{ color:#c9d6d0; }
+  .school-bar a{ color:var(--accent-dark); font-weight:700; text-decoration:none; }
+
+  .card{
+    background:#ffffffdd;
+    border:1px solid var(--border);
+    border-radius:26px;
+    box-shadow:0 12px 34px rgba(60,90,80,0.10);
+    padding:30px 26px 28px;
+    margin-bottom:20px;
+  }
+
+  .field{ margin-bottom:20px; }
+  .field:last-child{ margin-bottom:0; }
+
+  .field label{
+    display:block;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .field label .req{ color:#e0664f; margin-left:2px; }
+  .field label .opt{
+    font-family:'Noto Sans',sans-serif;
+    font-weight:600;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    opacity:0.7;
+    margin-left:6px;
+  }
+
+  input[type="text"], input[type="tel"], input[type="email"]{
+    width:100%;
+    padding:13px 15px;
+    font-family:inherit;
+    font-size:15.5px;
+    color:var(--ink);
+    background:#fbfdfc;
+    border:1.5px solid var(--border);
+    border-radius:13px;
+    outline:none;
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  input:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(63,165,135,0.14);
+    background:#fff;
+  }
+  .hint{ font-size:12.5px; color:var(--ink-soft); margin-top:6px; }
+
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .slno-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:linear-gradient(120deg, var(--mint), var(--lav));
+    border:1.5px dashed #9fd0bd;
+    border-radius:13px;
+    padding:13px 16px;
+  }
+  .slno-box .value{ font-size:19px; font-weight:800; color:var(--accent-dark); }
+  .slno-pending{ font-size:13.5px; color:var(--ink-soft); font-weight:600; }
+
+  .age-group-card{
+    display:none;
+  }
+  .age-group-card.active{ display:block; }
+
+  .age-group-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--accent-dark);
+    margin:0 0 4px;
+  }
+  .age-group-title .ta{ color:var(--accent-dark); opacity:0.85; }
+
+  .activity-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+  .activity-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    background:#fbfdfc;
+    border:1.5px solid var(--border);
+    border-radius:13px;
+    padding:12px 14px;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .activity-item:hover{ border-color:#b9dccf; }
+  .activity-item input{
+    margin-top:3px;
+    width:18px; height:18px;
+    accent-color:var(--accent);
+    flex-shrink:0;
+  }
+  .activity-item .txt{ flex:1; }
+  .activity-item .name{
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .activity-item .name .ta{ font-weight:600; }
+  .activity-item .desc{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .activity-item .badge{
+    display:inline-block;
+    margin-top:6px;
+    font-size:11px;
+    font-weight:700;
+    color:#7a5a1f;
+    background:#ffe9b8;
+    padding:3px 9px;
+    border-radius:999px;
+  }
+  .activity-item .badge .ta{ display:inline; font-size:1em; color:#7a5a1f; margin:0 0 0 4px; }
+
+  .no-age-msg{
+    font-size:14px;
+    color:var(--ink-soft);
+    background:#f6f4fb;
+    border:1.5px dashed #d8d2ee;
+    border-radius:13px;
+    padding:16px;
+    text-align:center;
+  }
+
+  .save-btn{
+    width:100%;
+    margin-top:6px;
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    color:#fff;
+    background:linear-gradient(120deg, var(--accent), var(--accent-dark));
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(63,165,135,0.32);
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  }
+  .save-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(63,165,135,0.38); }
+  .save-btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
+  .save-btn .btn-ta{
+    display:block;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:0.62em;
+    font-weight:600;
+    opacity:0.92;
+    margin-top:3px;
+  }
+
+  .status-msg{ display:none; margin-top:18px; padding:16px 18px; border-radius:15px; text-align:center; }
+  .status-msg.show{ display:block; }
+  .status-msg.success{ background:var(--success-bg); border:1px solid var(--success-border); color:var(--success-ink); }
+  .status-msg.error{ background:var(--error-bg); border:1px solid var(--error-border); color:var(--error-ink); }
+  .status-msg .line1{ font-weight:700; font-size:16px; }
+  .status-msg .line1-ta{ display:block; font-family:'Noto Sans Tamil',sans-serif; font-weight:600; font-size:0.85em; margin-top:2px; }
+  .status-msg .slno-line{ margin-top:8px; font-size:15px; }
+  .status-msg .slno-line b{ font-size:19px; }
+
+  footer{
+    text-align:center;
+    margin-top:8px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow"><span class="dot"></span>Registration</span>
+    <h1>FUN Activity Day @ UME
+    
+    </h1>
+    <p class="sub">
+      Register your child for our age-wise activity stations at UME Preschool &amp; Daycare.
+      Some activities are done by the child alone, and some are combined <b>Parent &amp; Child</b> activities.
+      <span> </span>
+      <br>
+      REGISTRATION FREE | PRIZES AVAILABLE
+    </p>
+
+    <div class="school-bar">
+      <strong>UME Preschool &amp; Daycare</strong>
+      <span class="sep">•</span>
+      <span>15/7, Muthuswamy 1st Cross Street, Srinivasa Nagar, Peerkankaranai, Chennai 600063</span>
+      <span class="sep">•</span>
+      <span><a href="tel:9176220957">9176220957</a> / <a href="tel:7824051524">7824051524</a></span>
+    </div>
+  </header>
+
+  <form id="regForm" novalidate>
+
+    <div class="card">
+      <div class="field">
+        <label>Serial No.
+          <span class="ta">வரிசை எண்</span>
+        </label>
+        <div class="slno-box">
+          <span class="slno-pending" id="slnoLabel">Assigned when you click Save</span>
+          <span class="value" id="slnoDisplay">—</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="childName">Child's Name<span class="req">*</span>
+          <span class="ta">குழந்தையின் பெயர்</span>
+        </label>
+        <input type="text" id="childName" name="childName" placeholder="e.g. Aadhira Krishnan" autocomplete="off" required>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="age">Age (years)<span class="req">*</span>
+            <span class="ta">வயது (ஆண்டுகள்)</span>
+          </label>
+          <input type="text" id="age" name="age" placeholder="e.g. 3" inputmode="numeric" pattern="[0-9]{1,2}" maxlength="2" autocomplete="off" required>
+          <div class="hint">Activities shown below depend on age</div>
+        </div>
+        <div class="field">
+          <label for="mobile">Mobile Number<span class="req">*</span>
+            <span class="ta">மொபைல் எண்</span>
+          </label>
+          <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" inputmode="numeric" maxlength="10" autocomplete="off" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="parentName">Parent's Name<span class="req">*</span>
+          <span class="ta">பெற்றோர் பெயர்</span>
+        </label>
+        <input type="text" id="parentName" name="parentName" placeholder="e.g. Priya Krishnan" autocomplete="off" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email ID<span class="opt">optional</span>
+          <span class="ta">மின்னஞ்சல்</span>
+        </label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="field" style="margin-bottom:6px;">
+        <label>Preferred Activities<span class="req">*</span>
+          <span class="ta">விருப்பமான செயல்பாடுகள்</span>
+        </label>
+      </div>
+
+      <div id="noAgeMsg" class="no-age-msg">
+        Enter the child's age above to see the matching activities.
+        <span class="ta">பொருந்தும் செயல்பாடுகளைக் காண மேலே குழந்தையின் வயதை உள்ளிடவும்.</span>
+      </div>
+
+      <!-- 2 to 3 years -->
+      <div class="age-group-card" data-group="2-3">
+        <p class="age-group-title">Age Group: 2 to 3 years <span class="ta">வயது குழு: 2 முதல் 3 வருடம்</span></p>
+        <div class="activity-list">
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_2_3" value="Ball Sorting (Colour Identification)">
+            <span class="txt">
+              <span class="name">Ball Sorting <span class="ta">பந்து வகைப்படுத்துதல்</span></span>
+              <span class="desc">Colour Identification / நிற அடையாளம்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_2_3" value="Finding Objects (different objects will be placed) - Parent & Child">
+            <span class="txt">
+              <span class="name">Finding Objects <span class="ta">பொருட்களைக் கண்டுபிடித்தல்</span></span>
+              <span class="desc">Different objects will be placed / வெவ்வேறு பொருட்கள் வைக்கப்படும்</span>
+              <span class="badge">Parent &amp; Child<span class="ta">பெற்றோர் &amp; குழந்தை</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_2_3" value="Board Puzzle (Birds/Animals/Flowers) - Parent & Child">
+            <span class="txt">
+              <span class="name">Board Puzzle <span class="ta">பலகை புதிர்</span></span>
+              <span class="desc">Birds / Animals / Flowers</span>
+              <span class="badge">Parent &amp; Child<span class="ta">பெற்றோர் &amp; குழந்தை</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_2_3" value="Object Wrapped with Paper (to remove it)">
+            <span class="txt">
+              <span class="name">Object Wrapped with Paper <span class="ta">காகிதத்தால் சுற்றப்பட்ட பொருள்</span></span>
+              <span class="desc">To remove it / அதை அவிழ்த்தல்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_2_3" value="Blocks Building (any 3 blocks)">
+            <span class="txt">
+              <span class="name">Blocks Building <span class="ta">தொகுதிகளை கட்டுதல்</span></span>
+              <span class="desc">Any 3 blocks / ஏதேனும் 3 தொகுதிகள்</span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- 3 to 4 years -->
+      <div class="age-group-card" data-group="3-4">
+        <p class="age-group-title">Age Group: 3 to 4 years <span class="ta">வயது குழு: 3 முதல் 4 வருடம்</span></p>
+        <div class="activity-list">
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_3_4" value="Thirukural (any 3 recitations)">
+            <span class="txt">
+              <span class="name">Thirukural <span class="ta">திருக்குறள்</span></span>
+              <span class="desc">Any 3 recitations / ஏதேனும் 3 குறள்கள்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_3_4" value="Slogam (Hindi/Sanskrit Slokas)">
+            <span class="txt">
+              <span class="name">Slogam <span class="ta">ஸ்லோகம்</span></span>
+              <span class="desc">Hindi / Sanskrit Slokas / ஹிந்தி / சமஸ்கிருத ஸ்லோகங்கள்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_3_4" value="Memory Games (10 objects) - Parent & Child">
+            <span class="txt">
+              <span class="name">Memory Games <span class="ta">நினைவாற்றல் விளையாட்டுகள்</span></span>
+              <span class="desc">10 objects / 10 பொருட்கள்</span>
+              <span class="badge">Parent &amp; Child<span class="ta">பெற்றோர் &amp; குழந்தை</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_3_4" value="Aathichudi">
+            <span class="txt">
+              <span class="name">Aathichudi <span class="ta">ஆத்திச்சூடி</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_3_4" value="Clay (any 3 objects)">
+            <span class="txt">
+              <span class="name">Clay <span class="ta">களிமண்</span></span>
+              <span class="desc">Any 3 objects / ஏதேனும் 3 பொருட்கள்</span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- 4 to 5 years -->
+      <div class="age-group-card" data-group="4-5">
+        <p class="age-group-title">Age Group: 4 to 5 years <span class="ta">வயது குழு: 4 முதல் 5 வருடம்</span></p>
+        <div class="activity-list">
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Thirukural (any 3 recitations)">
+            <span class="txt">
+              <span class="name">Thirukural <span class="ta">திருக்குறள்</span></span>
+              <span class="desc">Any 3 recitations / ஏதேனும் 3 குறள்கள்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Clay (any 3 objects)">
+            <span class="txt">
+              <span class="name">Clay <span class="ta">களிமண்</span></span>
+              <span class="desc">Any 3 objects / ஏதேனும் 3 பொருட்கள்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Memory Games (10 objects) - Parent & Child">
+            <span class="txt">
+              <span class="name">Memory Games <span class="ta">நினைவாற்றல் விளையாட்டுகள்</span></span>
+              <span class="desc">10 objects / 10 பொருட்கள்</span>
+              <span class="badge">Parent &amp; Child<span class="ta">பெற்றோர் &amp; குழந்தை</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Puzzles (arranging) - Parent & Child">
+            <span class="txt">
+              <span class="name">Puzzles <span class="ta">புதிர்கள்</span></span>
+              <span class="desc">Arranging / வரிசைப்படுத்துதல்</span>
+              <span class="badge">Parent &amp; Child<span class="ta">பெற்றோர் &amp; குழந்தை</span></span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Slogam or Rhymes (Tamil & English rhymes)">
+            <span class="txt">
+              <span class="name">Slogam or Rhymes <span class="ta">ஸ்லோகம் அல்லது பாடல்கள்</span></span>
+              <span class="desc">Tamil &amp; English rhymes / தமிழ் &amp; ஆங்கில பாடல்கள்</span>
+            </span>
+          </label>
+
+          <label class="activity-item">
+            <input type="checkbox" name="activity_4_5" value="Ball Passing Cup Activity">
+            <span class="txt">
+              <span class="name">Ball Passing Cup Activity <span class="ta">பந்து பாஸிங் கப் செயல்பாடு</span></span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="save-btn">
+      Save
+      <span class="btn-ta">சேமி</span>
+    </button>
+    <div class="status-msg" id="statusMsg"></div>
+  </form>
+
+  <footer>UME Preschool &amp; Daycare &nbsp;|&nbsp; 9176220957 / 7824051524</footer>
+</div>
+
+<script>
+  /* =========================================================
+     GOOGLE FORM CONNECTION (UPDATED - Age-Group Separated)
+     ---------------------------------------------------------
+     SETUP INSTRUCTIONS:
+     
+     1. Create a Google Form with these fields IN THIS ORDER:
+        1. Serial No (short answer)
+        2. Child's Name (short answer)
+        3. Age (short answer)
+        4. Age Group (short answer)
+        5. Parent's Name (short answer)
+        6. Mobile Number (short answer)
+        7. Email ID (short answer)
+        8. Age 2-3 Activities (checkboxes) - ONLY IF NEEDED
+        9. Age 3-4 Activities (checkboxes) - ONLY IF NEEDED
+        10. Age 4-5 Activities (checkboxes) - ONLY IF NEEDED
+     
+     2. For each form field, get the entry ID by:
+        - Opening the live form
+        - Right-click → View Page Source
+        - Search for "entry." 
+        - Find the corresponding entry ID (e.g., entry.123456789)
+     
+     3. Replace the placeholder values below with your actual entry IDs.
+     
+     4. Replace GOOGLE_FORM_ID with your form ID.
+     
+     5. Leave all other code unchanged.
+     ========================================================= */
+  
+  const GOOGLE_FORM_ID = "1FAIpQLSfjkyiKZx2p6mjEWh9oLlCkTj7n6s5rFPNFqNAhpnV_GtbW8A";
+  const GOOGLE_FORM_ACTION = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+
+  // Entry IDs for Google Form fields
+  const ENTRY_IDS = {
+    slNo:          "entry.1209655972",
+    childName:     "entry.1722871007",
+    age:           "entry.1601968643",
+    ageGroup:      "entry.1829963349",
+    parentName:    "entry.457131456",
+    mobile:        "entry.1918074456",
+    email:         "entry.1099633780",
+    activities_2_3: "entry.68803327",  // Age 2-3 activities
+    activities_3_4: "entry.765374496",  // Age 3-4 activities
+    activities_4_5: "entry.1993546762"  // Age 4-5 activities
+  };
+
+  // Public counter for sequential Serial Numbers
+  // Free service - swap with Google Apps Script if you need guaranteed uptime for large events
+  const COUNTER_URL = "https://countapi.mileshilliard.com/api/v1/hit/ume-preschool-activity-day";
+
+  const form = document.getElementById('regForm');
+  const ageInput = document.getElementById('age');
+  const mobile = document.getElementById('mobile');
+  const saveBtn = form.querySelector('.save-btn');
+  const statusMsg = document.getElementById('statusMsg');
+  const slnoDisplay = document.getElementById('slnoDisplay');
+  const slnoLabel = document.getElementById('slnoLabel');
+  const noAgeMsg = document.getElementById('noAgeMsg');
+  const groupCards = document.querySelectorAll('.age-group-card');
+
+  ageInput.addEventListener('input', () => {
+    ageInput.value = ageInput.value.replace(/[^0-9]/g, '').slice(0, 2);
+    updateAgeGroup();
+  });
+
+  mobile.addEventListener('input', () => {
+    mobile.value = mobile.value.replace(/[^0-9]/g, '').slice(0, 10);
+  });
+
+  function ageToGroup(age) {
+    if (age < 3) return "2-3";
+    if (age < 4) return "3-4";
+    if (age <= 5) return "4-5";
+    return null;
+  }
+
+  function updateAgeGroup() {
+    const age = parseInt(ageInput.value, 10);
+    const group = isNaN(age) ? null : ageToGroup(age);
+
+    groupCards.forEach(card => {
+      const isActive = card.dataset.group === group;
+      card.classList.toggle('active', isActive);
+      if (!isActive) {
+        card.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      }
+    });
+
+    noAgeMsg.style.display = group ? 'none' : 'block';
+  }
+
+  async function getNextSlNo() {
+    try {
+      const res = await fetch(COUNTER_URL);
+      const data = await res.json();
+      return String(data.value);
+    } catch (err) {
+      return String(Date.now()).slice(-5);
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const age = parseInt(ageInput.value, 10);
+    const group = isNaN(age) ? null : ageToGroup(age);
+
+    if (!form.childName.value.trim()) { form.childName.focus(); return; }
+    if (!group) { ageInput.focus(); return; }
+    if (!form.parentName.value.trim()) { form.parentName.focus(); return; }
+    if (mobile.value.length !== 10) { mobile.focus(); return; }
+
+    // Get selected activities for the active age group
+    const checkedBoxes = document.querySelectorAll(
+      '.age-group-card.active input[type="checkbox"]:checked'
+    );
+    if (checkedBoxes.length === 0) {
+      alert("Please select at least one activity. / குறைந்தது ஒரு செயல்பாட்டையாவது தேர்ந்தெடுக்கவும்.");
+      return;
+    }
+
+    // Prepare activities data
+    const selectedActivities = Array.from(checkedBoxes).map(cb => cb.value).join(", ");
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving...";
+
+    const slNo = await getNextSlNo();
+    slnoDisplay.textContent = "#" + slNo;
+    slnoLabel.textContent = "Serial number";
+
+    // Build form payload
+    const payload = new FormData();
+    payload.append(ENTRY_IDS.slNo, slNo);
+    payload.append(ENTRY_IDS.childName, form.childName.value.trim());
+    payload.append(ENTRY_IDS.age, ageInput.value);
+    payload.append(ENTRY_IDS.ageGroup, group + " years");
+    payload.append(ENTRY_IDS.parentName, form.parentName.value.trim());
+    payload.append(ENTRY_IDS.mobile, mobile.value);
+    payload.append(ENTRY_IDS.email, form.email.value.trim());
+
+    // Send activities to the correct age group entry field
+    if (group === "2-3") {
+      payload.append(ENTRY_IDS.activities_2_3, selectedActivities);
+    } else if (group === "3-4") {
+      payload.append(ENTRY_IDS.activities_3_4, selectedActivities);
+    } else if (group === "4-5") {
+      payload.append(ENTRY_IDS.activities_4_5, selectedActivities);
+    }
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body: payload });
+
+      statusMsg.className = "status-msg show success";
+      statusMsg.innerHTML =
+        '<div class="line1">Your details have been saved successfully!' +
+        '<span class="line1-ta">உங்கள் விவரங்கள் வெற்றிகரமாக சேமிக்கப்பட்டன!</span></div>' +
+        '<div class="slno-line">Serial No: <b>#' + slNo + '</b>' +
+        '<span class="ta">வரிசை எண்: <b>#' + slNo + '</b></span></div>';
+
+      form.reset();
+      groupCards.forEach(c => c.classList.remove('active'));
+      noAgeMsg.style.display = 'block';
+      saveBtn.textContent = "Save";
+      saveBtn.disabled = false;
+    } catch (err) {
+      statusMsg.className = "status-msg show error";
+      statusMsg.innerHTML =
+        '<div class="line1">Something went wrong. Please try again.' +
+        '<span class="line1-ta">ஏதோ தவறு நடந்துள்ளது. மீண்டும் முயற்சிக்கவும்.</span></div>';
+      saveBtn.textContent = "Save";
+      saveBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
